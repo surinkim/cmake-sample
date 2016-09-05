@@ -14,7 +14,16 @@ How to build for Visual Studio
     cd build_vs
     cmake -G "Visual Studio 10" ..
 
-After that, `sample.sln` will generate in `build_vs` folder.
+`sample.sln` will generate in `build_vs` folder.
 
 How to build for linux
 ------
+
+    mkdir build_linux
+    cd build_linux
+    cmake -G "Unix Makefiles" ..
+    make
+
+To do
+------
+ Build on android, ios

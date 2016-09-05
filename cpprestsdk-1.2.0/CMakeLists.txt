@@ -32,7 +32,17 @@ file(GLOB_RECURSE cpprest_SRC
 
 set(Casablanca_DEFINITIONS -D_NO_ASYNCRTIMP -D_NO_PPLXIMP CACHE INTERNAL "Definitions for consume casablanca library")
 
-add_definitions(${Casablanca_DEFINITIONS} -D_WINSOCK_DEPRECATED_NO_WARNINGS -DWIN32)
+
+# Platform (not compiler) specific settings
+if(WIN32)
+	add_definitions(${Casablanca_DEFINITIONS} -D_WINSOCK_DEPRECATED_NO_WARNINGS -DWIN32)
+endif()
+
+
+# Compiler (not platform) specific settings
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+endif()
 
 add_library(cpprest STATIC ${cpprest_SRC})
 
