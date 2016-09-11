@@ -5,6 +5,7 @@ project(wrapper CXX)
 
 add_subdirectory(gloox-1.0.17)
 add_subdirectory(cpprestsdk-2.8.0/Release)
+add_subdirectory(wrapper)
 
 #add_executable(sample main.cpp)
 
