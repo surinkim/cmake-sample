@@ -240,6 +240,8 @@ then
 	make -j 1
     )
 
+: << 'END'
+
     (
 	mkdir -p build.armv7.release
 	cd build.armv7.release
@@ -287,5 +289,9 @@ then
 	    -DCMAKE_BUILD_TYPE=Release
 	make -j 1
     )
+
+END
+
 )
+
 fi

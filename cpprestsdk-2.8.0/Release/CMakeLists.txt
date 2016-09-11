@@ -44,16 +44,18 @@ elseif(ANDROID)
 
   set(OPENSSL_FOUND 1)
   if(ARM)
-    set(OPENSSL_INCLUDE_DIR "${CMAKE_BINARY_DIR}/../openssl/armeabi-v7a/include")
+    set(OPENSSL_INCLUDE_DIR "${CMAKE_BINARY_DIR}/openssl/armeabi-v7a/include")
     set(OPENSSL_LIBRARIES
-      "${CMAKE_BINARY_DIR}/../openssl/armeabi-v7a/lib/libssl.a"
-      "${CMAKE_BINARY_DIR}/../openssl/armeabi-v7a/lib/libcrypto.a"
+      "${CMAKE_BINARY_DIR}/openssl/armeabi-v7a/lib/libssl.a"
+      "${CMAKE_BINARY_DIR}/openssl/armeabi-v7a/lib/libcrypto.a"
       )
   else()
-    set(OPENSSL_INCLUDE_DIR "${CMAKE_BINARY_DIR}/../openssl/x86/include")
+
+	message(STATUS, "--OPENSSL 1 CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")
+    set(OPENSSL_INCLUDE_DIR "${CMAKE_BINARY_DIR}/openssl/x86/include")
     set(OPENSSL_LIBRARIES
-      "${CMAKE_BINARY_DIR}/../openssl/x86/lib/libssl.a"
-      "${CMAKE_BINARY_DIR}/../openssl/x86/lib/libcrypto.a"
+      "${CMAKE_BINARY_DIR}/openssl/x86/lib/libssl.a"
+      "${CMAKE_BINARY_DIR}/openssl/x86/lib/libcrypto.a"
       )
   endif()
 

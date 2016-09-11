@@ -107,7 +107,7 @@ Please read the leading comments before using the class.
 // GCC warning suppression
 #if SAFEINT_COMPILER == GCC_COMPILER
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-local-typedefs"
+//#pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 #endif
 
 #include <stdint.h>
@@ -122,7 +122,7 @@ Please read the leading comments before using the class.
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc++11-long-long"
 #pragma clang diagnostic ignored "-Wold-style-cast"
-#pragma clang diagnostic ignored "-Wunused-local-typedef"
+//#pragma clang diagnostic ignored "-Wunused-local-typedef"
 #endif
 
 #endif
