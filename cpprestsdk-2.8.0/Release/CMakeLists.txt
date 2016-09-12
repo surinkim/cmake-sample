@@ -36,9 +36,6 @@ elseif(ANDROID)
     set(BOOST_ROOT "${CMAKE_BINARY_DIR}/../Boost-for-Android-x86/build")
     set(BOOST_LIBRARYDIR "${CMAKE_BINARY_DIR}/../Boost-for-Android-x86/build/lib")
  
-    message(STATUS, "${BOOST_ROOT}")
-    message(STATUS, "${BOOST_LIBRARYDIR}")
-
   endif()
   find_host_package(Boost 1.55 EXACT REQUIRED COMPONENTS random system thread filesystem chrono atomic)
 
@@ -77,7 +74,7 @@ elseif(ANDROID)
 
   option(BUILD_SHARED_LIBS "Build shared Libraries." OFF)
   set(BUILD_SAMPLES OFF)
-  option(BUILD_TESTS "Build tests." ON)
+  option(BUILD_TESTS "Build tests." OFF)
 elseif(UNIX) # This includes OSX
   find_package(Boost REQUIRED COMPONENTS random chrono system thread regex filesystem)
   find_package(Threads REQUIRED)

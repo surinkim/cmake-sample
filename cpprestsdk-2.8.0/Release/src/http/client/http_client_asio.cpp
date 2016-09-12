@@ -29,7 +29,7 @@
 
 #if defined(__clang__)
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-local-typedef"
+//#pragma clang diagnostic ignored "-Wunused-local-typedef"
 #endif
 #include <boost/asio.hpp>
 #include <boost/asio/ssl.hpp>

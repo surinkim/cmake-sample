@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 OPENSSL_VER = openssl-1.0.2d
 
-all: armeabi-v7a/lib/libssl.a x86/lib/libssl.a
+all: x86/lib/libssl.a
 
 clean:
 	rm -rf $(OPENSSL_VER)
@@ -23,23 +23,6 @@ setenv-android-x86.sh: setenv-android.sh
 $(OPENSSL_VER).tar.gz:
 	wget https://www.openssl.org/source/$(OPENSSL_VER).tar.gz
 
-armeabi-v7a/lib/libssl.a: setenv-android.sh $(OPENSSL_VER).tar.gz
-	[ -d "$(ANDROID_NDK_ROOT)" ]
-	export ANDROID_NDK_ROOT="$(ANDROID_NDK_ROOT)"; \
-	. ./setenv-android.sh; \
-	( \
-		set -e; \
-		rm -rf $(OPENSSL_VER)/; \
-		tar xzf $(OPENSSL_VER).tar.gz; \
-		rm -rf $(OPENSSL_VER)-armeabi-v7a/ \
-	) && \
-	mv $(OPENSSL_VER) $(OPENSSL_VER)-armeabi-v7a && \
-	cd $(OPENSSL_VER)-armeabi-v7a && \
-	perl -pi -e 's/install: all install_docs install_sw/install: install_docs install_sw/g' Makefile.org && \
-	./config shared -no-ssl2 -no-ssl3 -no-comp -no-hw -no-engine --openssldir="`pwd`/../armeabi-v7a" && \
-	make depend && \
-	make all && \
-	make install CC=$${ANDROID_TOOLCHAIN}/arm-linux-androideabi-gcc RANLIB=$${ANDROID_TOOLCHAIN}/arm-linux-androideabi-ranlib
 
 x86/lib/libssl.a: setenv-android-x86.sh $(OPENSSL_VER).tar.gz
 	[ -d "$(ANDROID_NDK_ROOT)" ]

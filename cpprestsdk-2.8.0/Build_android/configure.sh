@@ -237,7 +237,7 @@ then
 	    -DANDROID_GOLD_LINKER=OFF \
 	    -DCMAKE_BUILD_TYPE=Debug \
 	    -DANDROID_NDK="${ANDROID_NDK}"
-	make -j 1
+	#make -j 1
     )
 
 : << 'END'
