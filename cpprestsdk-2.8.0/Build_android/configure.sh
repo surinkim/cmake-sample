@@ -125,7 +125,7 @@ then
 (
     if [ ! -d "openssl" ]; then mkdir openssl; fi
     cd openssl
-    cp "${DIR}/openssl/Makefile" .
+    cp -r "${DIR}/openssl/." .
     export ANDROID_NDK_ROOT="${NDK_DIR}"
     make all
 )
