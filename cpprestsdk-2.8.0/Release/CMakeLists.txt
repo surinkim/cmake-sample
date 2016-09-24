@@ -107,6 +107,11 @@ elseif(WIN32)
   option(CPPREST_EXCLUDE_WEBSOCKETS "Exclude websockets functionality." OFF)
   option(Boost_USE_STATIC_LIBS ON)
 
+  find_package(Boost 1.59 REQUIRED)
+  if (Boost_FOUND)
+	  message(STATUS, "-----boost found")
+  endif()
+
   add_definitions(-DUNICODE -D_UNICODE)
 
   if(NOT BUILD_SHARED_LIBS)
