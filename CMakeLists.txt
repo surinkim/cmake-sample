@@ -6,8 +6,5 @@ project(wrapper CXX)
 add_subdirectory(gloox-1.0.17)
 add_subdirectory(cpprestsdk-2.8.0/Release)
 add_subdirectory(wrapper)
+add_subdirectory(TestWrapper)
 
-#add_executable(sample main.cpp)
-
-#target_link_libraries(sample gloox)
-#target_link_libraries(sample cpprest)
