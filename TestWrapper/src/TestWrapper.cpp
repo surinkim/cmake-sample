@@ -9,7 +9,7 @@ int main()
 	if ( ret == false )
 		return -1;
 
-	ret = lib::CallWeb(inst);
+	ret = lib::CallHttp(inst, L"http://www.bing.com/search?q=mountain" );
 	if ( ret == false )
 		return -1;
 

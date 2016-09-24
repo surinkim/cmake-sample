@@ -18,16 +18,16 @@ bool Delete(LibInst& inst)
 	if(inst == nullptr)
 		return false;
 
-	delete inst;
+	delete static_cast<Core*>(inst);
 	return true;
 }
 
-bool CallWeb( LibInst& inst )
+bool CallHttp( LibInst& inst, const std::wstring& url )
 {
 	if ( inst == nullptr )
 		return false;
 
-	return static_cast<Core*>(inst)->CallWeb();
+	return static_cast<Core*>(inst)->CallHttp( url );
 }
 
 } //namesapce

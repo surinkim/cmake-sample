@@ -1,6 +1,8 @@
 #ifndef WRAPPER_H_
 #define WRAPPER_H_
 
+#include <iostream>
+
 namespace lib
 {
 
@@ -11,7 +13,7 @@ extern "C" {
 	bool Create(LibInst& inst);
 	bool Delete(LibInst& inst);
 
-	bool CallWeb(LibInst& inst);
+	bool CallHttp(LibInst& inst, const std::wstring& url);
 
 }
 
