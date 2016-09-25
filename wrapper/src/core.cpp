@@ -2,6 +2,11 @@
 
 #include <iostream>
 
+#ifdef __linux__
+#include <codecvt>
+#include <locale>
+#endif
+
 #include <cpprest/http_client.h>
 #include <cpprest/filestream.h>
 #include <cpprest/json.h>
@@ -17,9 +22,11 @@ using namespace concurrency::streams;       // Asynchronous streams
 namespace lib
 {
 
+#ifdef _WINDOWS
 pplx::task<void> CallAsyncHttp( const std::wstring& url )
 {
-	http_client client(url);
+
+	http_client(url);
 	return client.request( methods::GET )
 		.then( [] ( http_response response ) -> pplx::task<std::wstring>
 	{
@@ -31,11 +38,29 @@ pplx::task<void> CallAsyncHttp( const std::wstring& url )
 
 		return response.extract_string();
 	} )
-		.then( [] ( pplx::task<std::wstring> previousTask )
+		.then( [] ( pplx::task<std::string> previousTask )
 	{
 		std::wcout << previousTask.get().c_str() << std::endl;
 	} );
 }
+#elif __linux__
+pplx::task<void> CallAsyncHttp( const std::wstring& url )
+{
+
+	std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> convert;
+	http_client client( convert.to_bytes(url));
+	return client.request( methods::GET )
+		.then( [] ( http_response response ) -> pplx::task<std::string>
+	{
+		return response.extract_string();
+	})
+		.then( [] ( pplx::task<std::string> previousTask )
+	{
+		std::cout << previousTask.get().c_str() << std::endl;
+	});
+
+}
+#endif
 
 bool Core::CallHttp( const std::wstring& url )
 {
