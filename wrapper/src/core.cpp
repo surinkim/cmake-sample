@@ -26,7 +26,7 @@ namespace lib
 pplx::task<void> CallAsyncHttp( const std::wstring& url )
 {
 
-	http_client(url);
+	http_client client(url);
 	return client.request( methods::GET )
 		.then( [] ( http_response response ) -> pplx::task<std::wstring>
 	{
@@ -38,7 +38,7 @@ pplx::task<void> CallAsyncHttp( const std::wstring& url )
 
 		return response.extract_string();
 	} )
-		.then( [] ( pplx::task<std::string> previousTask )
+		.then( [] ( pplx::task<std::wstring> previousTask )
 	{
 		std::wcout << previousTask.get().c_str() << std::endl;
 	} );
