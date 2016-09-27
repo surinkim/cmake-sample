@@ -23,7 +23,15 @@ How to build for linux
     cd build_linux
     cmake -G "Unix Makefiles" ..
     make
+    
+How to build for android
+------
+
+    mkdir build_android
+    cd build_android
+    ../configure.sh
+    make
 
 To do
 ------
- Build on android, ios
+ Build on ios
