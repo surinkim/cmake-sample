@@ -1,0 +1,15 @@
+language: cpp
+
+matrix:
+  include:
+    - os: linux
+      compiler: gcc
+
+script:
+  - mkdir build_linux
+  - cd build_linux
+  - cmake -G "Unix Makefiles" ..
+  - make
+  
+
+      
